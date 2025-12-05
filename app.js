@@ -51,3 +51,29 @@ Solve Exercise 3 here:
 game.difficulty = ['Easy', 'Med', 'Hard']
 game.difficulty = game.difficulty[0]
 
+//=====================================================================
+
+//                  |---------- Exercise 4 ----------|
+
+
+console.log('\n --- Exercise 4 --- \n');
+/*
+1. Select a starter Pokémon from the `pokemon` array. Remember, a starter Pokémon's `starter` property is true.
+2. Add this Pokémon to the `game.party` array. Which array method will you use to add them?
+
+
+Solve Exercise 4 here:
+*/
+
+for (let object of pokemon) {
+    if (object.starter === true) {
+        console.log(object);
+    }
+}
+
+for (let object of pokemon) {
+    if (object.name === 'Pikachu') {
+        game.party.push(object);
+    }
+}
+console.log(game);
