@@ -159,3 +159,31 @@ for (let object of pokemon) {
     }
 }
 console.log(game)
+
+//=====================================================================
+
+//                  |---------- Exercise 8 ----------|
+
+
+console.log('\n --- Exercise 8 --- \n');
+/*
+1. Print the name of each Pokémon in your party.
+2. Consider using a loop or an array method to access each Pokémon's name.
+
+Solve Exercise 8 here:
+*/
+
+name1 = pokemon[25].name;
+name2 = pokemon[129].name;
+name3 = pokemon[148].name;
+name4 = pokemon[149].name;
+console.log(`Party Pokemon: ${name1}, ${name2}, ${name3}, ${name4}`);
+
+console.log('\n');
+
+console.log('Party Pokemon:');
+for (let pokemon of game.party) {
+    console.log(pokemon.name);
+}
+console.log('\n');
+
