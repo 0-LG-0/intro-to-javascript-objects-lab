@@ -77,3 +77,34 @@ for (let object of pokemon) {
     }
 }
 console.log(game);
+
+//=====================================================================
+
+//                  |---------- Exercise 5 ----------|
+
+
+console.log('\n --- Exercise 5 --- \n');
+/*
+1. Choose three more Pokémon from the `pokemon` array and add them to your party.
+2. Consider different attributes like 'type' or 'HP' for your selection. Which array method will you use to add them?
+
+
+Solve Exercise 5 here:
+*/
+
+//console.log(pokemon);
+for (let object of pokemon) {
+    if (object.name === 'Gyarados') {
+        game.party.push(object);
+    }
+
+    if (object.name === 'Mewtwo') {
+        game.party.push(object);
+    }
+
+    if (object.name === 'Dragonite') {
+        game.party.push(object);
+    }
+}
+console.log(game)
+
