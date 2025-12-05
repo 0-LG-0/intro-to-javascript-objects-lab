@@ -108,3 +108,26 @@ for (let object of pokemon) {
 }
 console.log(game)
 
+//=====================================================================
+
+//                  |---------- Exercise 6 ----------|
+
+
+console.log('\n --- Exercise 6 --- \n');
+/*
+1. Set the `completed` property to true for gyms with a difficulty below 3.
+2. Think about how you'd loop through the `gyms` array to check and update the `completed` property.
+
+
+Solve Exercise 6 here:
+*/
+
+
+for (let gym of game.gyms) {
+    if (gym.difficulty < 3) {
+        console.log(gym)
+        gym.completed = true;
+    }
+}
+console.log(game)
+
