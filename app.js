@@ -187,3 +187,32 @@ for (let pokemon of game.party) {
 }
 console.log('\n');
 
+//=====================================================================
+
+//                  |---------- Exercise 9 ----------|
+
+
+console.log('\n --- Exercise 9 --- \n');
+/*
+1. Can you print out all the starter Pokémon from the `pokemon` array?
+2. Think about how you can identify a starter Pokémon and then log their names.
+
+
+Solve Exercise 9 here:
+*/
+
+name1 = pokemon[24].name;
+name2 = pokemon[6].name;
+name3 = pokemon[3].name;
+name4 = pokemon[0].name;
+console.log(`Starter Pokemon: ${name1}, ${name2}, ${name3}, ${name4}`);
+
+console.log('\n');
+
+console.log('Starter Pokemon:')
+for (let object of pokemon) {
+    if (object.starter === true) {
+        console.log(object.name)
+    }
+}
+
