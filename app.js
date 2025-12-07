@@ -473,7 +473,7 @@ Also, ensure that the Pokemon isn't added to the `game.party` or the `game.colle
 
 Solve Exercise 19 here:
 */
-
+/*
 game.collection = []
 
 const catchPokemon = {
@@ -511,4 +511,61 @@ catchPokemon.function(pokemon[9]);
 catchPokemon.function(pokemon[10]);
 catchPokemon.function(pokemon[11]);
 catchPokemon.function(pokemon[12]);
+*/
+//=====================================================================
+
+//                  |---------- Exercise 20 ----------|
+
+
+console.log('\n --- Exercise 20 --- \n');
+/*
+Copy the `catchPokemon` method that you just wrote above, and paste it below. Modify is so that you can just pass in the name of a Pokemon instead of an entire object, and the method will look up the Pokemon from the data set for you.
+
+The string passed in should be allowed to be any case (for example, if the string 'PiKacHU' is passed to the function, it should match to 'Pikachu' in the data set). 
+
+If there is not a match, then return a string noting that the selected Pokemon does not exist. Ensure you do not decrement the pokeball count if an invalid Pokemon name is passed in, and also ensure that the Pokemon isn't added to the `game.party` or the `game.collection`.
+
+Solve Exercise 20 here:
+*/
+
+game.collection = []
+
+const catchPokemon = {
+
+    function(pokemonObj) {
+
+        pokemonObj = pokemonObj.toLowerCase();
+        pokemonObj = pokemonObj.charAt(0).toUpperCase() + pokemonObj.slice(1)
+
+        pokeball = game.items[1];
+
+        for (let each of pokemon) {
+            if (pokemonObj === each.name) {
+
+                if (pokeball.quantity > 0) {
+                    game.party.push(each);
+                    pokeball.quantity -= 1
+                }
+            }
+
+        }
+
+        if (game.party.length > 6) {
+            game.collection.push(pokemonObj);
+            game.party.pop(pokemonObj);
+        }
+
+        console.log(game);
+        console.log(game.items[1]);
+
+        if (pokemonObj !== pokemon.name) {
+            console.log("\n Selected Pokemon doesn't exist! \n")
+        }
+
+        if (pokeball.quantity == 0) {
+            console.log('\n Not enough pokeballs to catch the desired Pokemon! \n');
+        }
+    }
+};
+catchPokemon.function('PiKaChU');
 
