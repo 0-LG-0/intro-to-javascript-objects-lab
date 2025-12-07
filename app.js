@@ -569,3 +569,104 @@ const catchPokemon = {
 };
 catchPokemon.function('PiKaChU');
 
+//=====================================================================
+
+//                  |---------- Exercise 21 ----------|
+
+
+console.log('\n --- Exercise 21 --- \n');
+/*
+Dynamically construct an object with the existing `pokemon` data sorted by the different pokemon types. The object will have this structure:
+
+{
+  grass: [
+    { number: 1, name: 'Bulbasaur', type: 'grass', hp: 45, starter: true },
+    { number: 2, name: 'Ivysaur', type: 'grass', hp: 60, starter: false },
+    { number: 3, name: 'Venusaur', type: 'grass', hp: 80, starter: false },
+    * more grass type Pokemon objects...
+  ],
+  fire: [
+    { number: 4, name: 'Charmander', type: 'fire', hp: 39, starter: true },
+    * more fire type Pokemon objects...
+  ],
+  water: [
+    * water type Pokemon objects...
+  ],
+  * etc... until there is an array for every Pokemon type!
+}
+
+Log the object when it's constructed.
+
+Solve Exercise 21 here:
+*/
+pokemonData = {
+    normal: [],
+    electric: [],
+    fire: [],
+    water: [],
+    grass: [],
+    ice: [],
+    fighting: [],
+    poison: [],
+    ground: [],
+    psychic: [],
+    bug: [],
+    rock: [],
+    ghost: [],
+    dragon: [],
+    fairy: [],
+};
+
+
+
+for (let each of pokemon) {
+    if (each.type === 'normal') {
+        pokemonData.normal.push(each)
+    }
+    if (each.type === 'electric') {
+        pokemonData.electric.push(each)
+    }
+    if (each.type === 'fire') {
+        pokemonData.fire.push(each)
+    }
+    if (each.type === 'water') {
+        pokemonData.water.push(each)
+    }
+    if (each.type === 'grass') {
+        pokemonData.grass.push(each)
+    }
+    if (each.type === 'ice') {
+        pokemonData.ice.push(each)
+    }
+    if (each.type === 'fighting') {
+        pokemonData.fighting.push(each)
+    }
+    if (each.type === 'poison') {
+        pokemonData.poison.push(each)
+    }
+    if (each.type === 'ground') {
+        pokemonData.ground.push(each)
+    }
+    if (each.type === 'psychic') {
+        pokemonData.psychic.push(each)
+    }
+    if (each.type === 'bug') {
+        pokemonData.bug.push(each)
+    }
+    if (each.type === 'rock') {
+        pokemonData.rock.push(each)
+    }
+    if (each.type === 'ghost') {
+        pokemonData.ghost.push(each)
+    }
+    if (each.type === 'dragon') {
+        pokemonData.dragon.push(each)
+    }
+    if (each.type === 'fairy') {
+        pokemonData.fairy.push(each)
+    }
+
+}
+console.log(pokemonData);
+
+//=====================================================================
