@@ -51,6 +51,8 @@ Solve Exercise 3 here:
 game.difficulty = ['Easy', 'Med', 'Hard']
 game.difficulty = game.difficulty[0]
 
+console.log(game);
+
 //=====================================================================
 
 //                  |---------- Exercise 4 ----------|
@@ -64,19 +66,21 @@ console.log('\n --- Exercise 4 --- \n');
 
 Solve Exercise 4 here:
 */
+const starters = pokemon.filter(p => p.starter === true);
+console.log(starters);
 
+const pikachu = pokemon.find(p => p.name === 'Pikachu');
+game.party.push(pikachu);
+/*
 for (let object of pokemon) {
     if (object.starter === true) {
         console.log(object);
     }
-}
-
-for (let object of pokemon) {
     if (object.name === 'Pikachu') {
         game.party.push(object);
     }
-}
-console.log(game);
+};*/
+console.log(game.party);
 
 //=====================================================================
 
@@ -93,21 +97,30 @@ Solve Exercise 5 here:
 */
 
 //console.log(pokemon);
+const gyarados = pokemon.find(p => p.name === 'Gyarados');
+game.party.push(gyarados);
+
+const mewtwo = pokemon.find(p => p.name === 'Mewtwo');
+game.party.push(mewtwo);
+
+const dragonite = pokemon.find(p => p.name === 'Dragonite');
+game.party.push(dragonite);
+
+console.log(game.party);
+/*
 for (let object of pokemon) {
     if (object.name === 'Gyarados') {
         game.party.push(object);
     }
-
     if (object.name === 'Mewtwo') {
         game.party.push(object);
     }
-
     if (object.name === 'Dragonite') {
         game.party.push(object);
     }
 }
 console.log(game)
-
+*/
 //=====================================================================
 
 //                  |---------- Exercise 6 ----------|
@@ -122,14 +135,13 @@ console.log('\n --- Exercise 6 --- \n');
 Solve Exercise 6 here:
 */
 
-
 for (let gym of game.gyms) {
     if (gym.difficulty < 3) {
         console.log(gym)
         gym.completed = true;
     }
-}
-console.log(game)
+};
+console.log(game.gyms);
 
 //=====================================================================
 
@@ -153,12 +165,9 @@ More Hints: The existing starter Pokemon will be *replaced* in your party with t
 Solve Exercise 7 here:
 */
 
-for (let object of pokemon) {
-    if (object.name === 'Raichu') {
-        game.party.splice(0, 1, object)
-    }
-}
-console.log(game)
+const raichu = pokemon.find(p => p.name === 'Raichu');
+game.party.splice(0, 1, raichu);
+console.log(game.party);
 
 //=====================================================================
 
@@ -173,19 +182,12 @@ console.log('\n --- Exercise 8 --- \n');
 Solve Exercise 8 here:
 */
 
-name1 = pokemon[25].name;
-name2 = pokemon[129].name;
-name3 = pokemon[148].name;
-name4 = pokemon[149].name;
-console.log(`Party Pokemon: ${name1}, ${name2}, ${name3}, ${name4}`);
-
-console.log('\n');
-
+console.log(`Party Pokemon: ${raichu.name}, ${gyarados.name}, ${mewtwo.name}, and ${dragonite.name} \n`)
+//Unsure which way is better
 console.log('Party Pokemon:');
 for (let pokemon of game.party) {
     console.log(pokemon.name);
-}
-console.log('\n');
+};
 
 //=====================================================================
 
@@ -201,21 +203,17 @@ console.log('\n --- Exercise 9 --- \n');
 Solve Exercise 9 here:
 */
 
-name1 = pokemon[24].name;
-name2 = pokemon[6].name;
-name3 = pokemon[3].name;
-name4 = pokemon[0].name;
-console.log(`Starter Pokemon: ${name1}, ${name2}, ${name3}, ${name4}`);
-
-console.log('\n');
-
+console.log(starters);
+console.log('\nStarter Pokemon:')
+starters.forEach(starters => console.log(starters.name));
+/*
 console.log('Starter Pokemon:')
 for (let object of pokemon) {
     if (object.starter === true) {
         console.log(object.name)
     }
-}
-
+};
+*/
 //=====================================================================
 
 //                  |---------- Exercise 10 ----------|
@@ -233,13 +231,11 @@ After writing this method, call it and pass in a Pokemon object of your choice f
 Solve Exercise 10 here:
 */
 /*
-const catchPokemon = {
-function(pokemonObj) {
+game.catchPokemon = function(pokemonObj) {
     game.party.push({pokemonObj});
     console.log(game.party);
-}
 };
-catchPokemon.function(pokemon[5]);
+game.catchPokemon(pokemon[5]);
 */
 //=====================================================================
 
@@ -259,16 +255,14 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 Solve Exercise 11 here:
 */
 /*
-const catchPokemon = {
-    function(pokemonObj) {
+game.catchPokemon = function(pokemonObj) {
         game.party.push(pokemonObj);
         console.log(game.party);
         pokeball = game.items[1];
-        pokeball.quantity -= 1
-        console.log(game.items[1]);
-    }
-};
-catchPokemon.function(pokemon[5]);
+        pokeball.quantity -= 1;
+        console.log(pokeball);
+    };
+game.catchPokemon(pokemon[5]);
 */
 //=====================================================================
 
@@ -319,21 +313,21 @@ For example, if five gym objects have a value of `true` on their `completed` pro
 Solve Exercise 13 here:
 */
 
-const gymStatus = {
-    function() {
+game.gymStatus = function() {
         gymTally = { completed: 0, incomplete: 0 };
         for (let gym of game.gyms) {
-            if (gym.completed === true) {
+            if (gym.completed) gymTally.completed++;
+            else gymTally.incomplete++;
+           /* if (gym.completed === true) {
                 gymTally.completed += 1
             }
             else if (gym.completed === false) {
                 gymTally.incomplete += 1
-            }
+            }*/
         }
-        console.log(gymTally);
-    }
-}
-gymStatus.function();
+        console.log({gymTally});
+    };
+game.gymStatus();
 
 //=====================================================================
 
@@ -351,16 +345,14 @@ This method should:
 
 Solve Exercise 14 here:
 */
-const partyCount = {
-    function() {
-        partyMembers = { pokemon: 0 };
+game.partyCount = function() {
+        partyMembers = {pokemon: 0};
         for (let obj of game.party) {
-            partyMembers.pokemon += 1
+            partyMembers.pokemon += 1;
         }
-        console.log({ partyMembers });
-    }
+        console.log({partyMembers});
 };
-partyCount.function();
+game.partyCount();
 
 //=====================================================================
 
@@ -439,24 +431,22 @@ Solve Exercise 18 here:
 /*
 game.collection = []
 
-const catchPokemon = {
-    function(pokemonObj) {
+game.catchPokemon = function(pokemonObj) {
         game.party.push(pokemonObj);
         pokeball = game.items[1];
         pokeball.quantity -= 1
 
         if (game.party.length > 6) {
-            game.collection.push(pokemonObj);
-            game.party.pop(pokemonObj);
+            const extra = game.party.pop();
+            game.collection.push(extra);
         }
         console.log(game);
         console.log(game.items[1]);
-    }
 };
 
-catchPokemon.function(pokemon[5]);
-catchPokemon.function(pokemon[7]);
-catchPokemon.function(pokemon[6]);
+game.catchPokemon(pokemon[5]);
+game.catchPokemon(pokemon[7]);
+game.catchPokemon(pokemon[6]);
 */
 //=====================================================================
 
@@ -476,9 +466,7 @@ Solve Exercise 19 here:
 /*
 game.collection = []
 
-const catchPokemon = {
-
-    function(pokemonObj) {
+game.catchPokemon = function(pokemonObj) {
 
         pokeball = game.items[1];
 
@@ -488,8 +476,8 @@ const catchPokemon = {
         }
 
         if (game.party.length > 6) {
-            game.collection.push(pokemonObj);
-            game.party.pop(pokemonObj);
+            const extra = game.party.pop();
+            game.collection.push(extra);
         }
 
         console.log(game);
@@ -498,19 +486,16 @@ const catchPokemon = {
         if (pokeball.quantity == 0) {
             console.log('Not enough pokeballs to catch the desired Pokemon!!!');
         }
-
-
-    }
 };
 
-catchPokemon.function(pokemon[5]);
-catchPokemon.function(pokemon[6]);
-catchPokemon.function(pokemon[7]);
-catchPokemon.function(pokemon[8]);
-catchPokemon.function(pokemon[9]);
-catchPokemon.function(pokemon[10]);
-catchPokemon.function(pokemon[11]);
-catchPokemon.function(pokemon[12]);
+game.catchPokemon(pokemon[5]);
+game.catchPokemon(pokemon[6]);
+game.catchPokemon(pokemon[7]);
+game.catchPokemon(pokemon[8]);
+game.catchPokemon(pokemon[9]);
+game.catchPokemon(pokemon[10]);
+game.catchPokemon(pokemon[11]);
+game.catchPokemon(pokemon[12]);
 */
 //=====================================================================
 
@@ -530,9 +515,7 @@ Solve Exercise 20 here:
 
 game.collection = []
 
-const catchPokemon = {
-
-    function(pokemonObj) {
+game.catchPokemon = function(pokemonObj) {
 
         pokemonObj = pokemonObj.toLowerCase();
         pokemonObj = pokemonObj.charAt(0).toUpperCase() + pokemonObj.slice(1)
@@ -551,23 +534,24 @@ const catchPokemon = {
         }
 
         if (game.party.length > 6) {
-            game.collection.push(pokemonObj);
-            game.party.pop(pokemonObj);
+            const extra = game.party.pop();
+            game.collection.push(extra);
         }
 
         console.log(game);
         console.log(game.items[1]);
 
-        if (pokemonObj !== pokemon.name) {
-            console.log("\n Selected Pokemon doesn't exist! \n")
+        const found = pokemon.find(p => p.name === pokemonObj);
+        if (!found) {
+            console.log("Selected Pokemon doesn't exist!");
+            return;
         }
 
         if (pokeball.quantity == 0) {
             console.log('\n Not enough pokeballs to catch the desired Pokemon! \n');
         }
-    }
 };
-catchPokemon.function('PiKaChU');
+game.catchPokemon('PiKaChU');
 
 //=====================================================================
 
@@ -599,74 +583,14 @@ Log the object when it's constructed.
 
 Solve Exercise 21 here:
 */
-pokemonData = {
-    normal: [],
-    electric: [],
-    fire: [],
-    water: [],
-    grass: [],
-    ice: [],
-    fighting: [],
-    poison: [],
-    ground: [],
-    psychic: [],
-    bug: [],
-    rock: [],
-    ghost: [],
-    dragon: [],
-    fairy: [],
+const pokemonData = {};
+
+for (let p of pokemon) {
+    if (!pokemonData[p.type])
+        pokemonData[p.type] = [];
+        pokemonData[p.type].push(p);
 };
 
-
-
-for (let each of pokemon) {
-    if (each.type === 'normal') {
-        pokemonData.normal.push(each)
-    }
-    if (each.type === 'electric') {
-        pokemonData.electric.push(each)
-    }
-    if (each.type === 'fire') {
-        pokemonData.fire.push(each)
-    }
-    if (each.type === 'water') {
-        pokemonData.water.push(each)
-    }
-    if (each.type === 'grass') {
-        pokemonData.grass.push(each)
-    }
-    if (each.type === 'ice') {
-        pokemonData.ice.push(each)
-    }
-    if (each.type === 'fighting') {
-        pokemonData.fighting.push(each)
-    }
-    if (each.type === 'poison') {
-        pokemonData.poison.push(each)
-    }
-    if (each.type === 'ground') {
-        pokemonData.ground.push(each)
-    }
-    if (each.type === 'psychic') {
-        pokemonData.psychic.push(each)
-    }
-    if (each.type === 'bug') {
-        pokemonData.bug.push(each)
-    }
-    if (each.type === 'rock') {
-        pokemonData.rock.push(each)
-    }
-    if (each.type === 'ghost') {
-        pokemonData.ghost.push(each)
-    }
-    if (each.type === 'dragon') {
-        pokemonData.dragon.push(each)
-    }
-    if (each.type === 'fairy') {
-        pokemonData.fairy.push(each)
-    }
-
-}
 console.log(pokemonData);
 
 //=====================================================================
