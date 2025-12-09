@@ -71,15 +71,7 @@ console.log(starters);
 
 const pikachu = pokemon.find(p => p.name === 'Pikachu');
 game.party.push(pikachu);
-/*
-for (let object of pokemon) {
-    if (object.starter === true) {
-        console.log(object);
-    }
-    if (object.name === 'Pikachu') {
-        game.party.push(object);
-    }
-};*/
+
 console.log(game.party);
 
 //=====================================================================
@@ -107,20 +99,7 @@ const dragonite = pokemon.find(p => p.name === 'Dragonite');
 game.party.push(dragonite);
 
 console.log(game.party);
-/*
-for (let object of pokemon) {
-    if (object.name === 'Gyarados') {
-        game.party.push(object);
-    }
-    if (object.name === 'Mewtwo') {
-        game.party.push(object);
-    }
-    if (object.name === 'Dragonite') {
-        game.party.push(object);
-    }
-}
-console.log(game)
-*/
+
 //=====================================================================
 
 //                  |---------- Exercise 6 ----------|
@@ -206,14 +185,7 @@ Solve Exercise 9 here:
 console.log(starters);
 console.log('\nStarter Pokemon:')
 starters.forEach(starters => console.log(starters.name));
-/*
-console.log('Starter Pokemon:')
-for (let object of pokemon) {
-    if (object.starter === true) {
-        console.log(object.name)
-    }
-};
-*/
+
 //=====================================================================
 
 //                  |---------- Exercise 10 ----------|
@@ -230,13 +202,14 @@ After writing this method, call it and pass in a Pokemon object of your choice f
 
 Solve Exercise 10 here:
 */
-/*
+
 game.catchPokemon = function(pokemonObj) {
     game.party.push({pokemonObj});
     console.log(game.party);
+    
 };
 game.catchPokemon(pokemon[5]);
-*/
+
 //=====================================================================
 
 //                  |---------- Exercise 11 ----------|
@@ -254,7 +227,7 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 
 Solve Exercise 11 here:
 */
-/*
+
 game.catchPokemon = function(pokemonObj) {
         game.party.push(pokemonObj);
         console.log(game.party);
@@ -262,8 +235,8 @@ game.catchPokemon = function(pokemonObj) {
         pokeball.quantity -= 1;
         console.log(pokeball);
     };
-game.catchPokemon(pokemon[5]);
-*/
+game.catchPokemon(pokemon[2]);
+
 //=====================================================================
 
 //                  |---------- Exercise 12 ----------|
@@ -314,18 +287,12 @@ Solve Exercise 13 here:
 */
 
 game.gymStatus = function() {
-        gymTally = { completed: 0, incomplete: 0 };
+    const gymTally = { completed: 0, incomplete: 0 };
         for (let gym of game.gyms) {
             if (gym.completed) gymTally.completed++;
             else gymTally.incomplete++;
-           /* if (gym.completed === true) {
-                gymTally.completed += 1
-            }
-            else if (gym.completed === false) {
-                gymTally.incomplete += 1
-            }*/
         }
-        console.log({gymTally});
+        console.log(gymTally);
     };
 game.gymStatus();
 
@@ -346,13 +313,13 @@ This method should:
 Solve Exercise 14 here:
 */
 game.partyCount = function() {
-        partyMembers = {pokemon: 0};
-        for (let obj of game.party) {
-            partyMembers.pokemon += 1;
-        }
-        console.log({partyMembers});
+    {let count = 0; for (let obj of game.party) { 
+        count ++; 
+    } return count; 
+};
 };
 game.partyCount();
+console.log(game.partyCount());
 
 //=====================================================================
 
@@ -403,7 +370,7 @@ Solve Exercise 17 here:
 
 game.party.sort((a, b) => b.hp - a.hp);
 
-console.log(game);
+console.log(game.party);
 
 //=====================================================================
 
@@ -428,7 +395,7 @@ Also, log the `game.items` array to confirm that the pokeball quantity is being 
 
 Solve Exercise 18 here:
 */
-/*
+
 game.collection = []
 
 game.catchPokemon = function(pokemonObj) {
@@ -441,13 +408,14 @@ game.catchPokemon = function(pokemonObj) {
             game.collection.push(extra);
         }
         console.log(game);
-        console.log(game.items[1]);
+        console.log(pokeball);
 };
 
-game.catchPokemon(pokemon[5]);
+game.catchPokemon(pokemon[1]);
 game.catchPokemon(pokemon[7]);
 game.catchPokemon(pokemon[6]);
-*/
+
+
 //=====================================================================
 
 //                  |---------- Exercise 19 ----------|
@@ -463,12 +431,16 @@ Also, ensure that the Pokemon isn't added to the `game.party` or the `game.colle
 
 Solve Exercise 19 here:
 */
-/*
+
 game.collection = []
 
 game.catchPokemon = function(pokemonObj) {
-
         pokeball = game.items[1];
+
+        if (pokeball.quantity <= 0) {
+            console.log('Not enough pokeballs to catch the desired Pokemon!!!'); 
+            return;
+        }
 
         if (pokeball.quantity > 0) {
             game.party.push(pokemonObj);
@@ -483,20 +455,13 @@ game.catchPokemon = function(pokemonObj) {
         console.log(game);
         console.log(game.items[1]);
 
-        if (pokeball.quantity == 0) {
-            console.log('Not enough pokeballs to catch the desired Pokemon!!!');
-        }
+        
 };
 
-game.catchPokemon(pokemon[5]);
-game.catchPokemon(pokemon[6]);
-game.catchPokemon(pokemon[7]);
 game.catchPokemon(pokemon[8]);
 game.catchPokemon(pokemon[9]);
 game.catchPokemon(pokemon[10]);
-game.catchPokemon(pokemon[11]);
-game.catchPokemon(pokemon[12]);
-*/
+
 //=====================================================================
 
 //                  |---------- Exercise 20 ----------|
@@ -515,15 +480,30 @@ Solve Exercise 20 here:
 
 game.collection = []
 
-game.catchPokemon = function(pokemonObj) {
+game.catchPokemon = function(pokemonName) {
+    pokeball = game.items[1];
 
+    const cleaned = pokemonName.trim().toLowerCase(); 
+    const formatted = cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+    //console.log(formatted);
+    const found = pokemon.find(p => p.name === formatted);
+    if (!found) {
+        console.log("Selected Pokemon doesn't exist!");
+        return;
+    }
+
+    if (pokeball.quantity <= 0) {
+        console.log('Not enough pokeballs to catch the desired Pokemon!!!');
+        return;
+    }
+    /* // this method worked for me by setting all letters to lowerCase then setting the first to upperCase
         pokemonObj = pokemonObj.toLowerCase();
         pokemonObj = pokemonObj.charAt(0).toUpperCase() + pokemonObj.slice(1)
-
-        pokeball = game.items[1];
+        */
+        
 
         for (let each of pokemon) {
-            if (pokemonObj === each.name) {
+            if (pokemonName === each.name) {
 
                 if (pokeball.quantity > 0) {
                     game.party.push(each);
@@ -541,15 +521,8 @@ game.catchPokemon = function(pokemonObj) {
         console.log(game);
         console.log(game.items[1]);
 
-        const found = pokemon.find(p => p.name === pokemonObj);
-        if (!found) {
-            console.log("Selected Pokemon doesn't exist!");
-            return;
-        }
-
-        if (pokeball.quantity == 0) {
-            console.log('\n Not enough pokeballs to catch the desired Pokemon! \n');
-        }
+        
+        
 };
 game.catchPokemon('PiKaChU');
 
@@ -583,14 +556,15 @@ Log the object when it's constructed.
 
 Solve Exercise 21 here:
 */
+
 const pokemonData = {};
 
 for (let p of pokemon) {
-    if (!pokemonData[p.type])
-        pokemonData[p.type] = [];
+    if (!pokemonData[p.type]) {
+        pokemonData[p.type] = []; }
         pokemonData[p.type].push(p);
 };
 
 console.log(pokemonData);
 
-//=====================================================================
+//=====================================================================*/
